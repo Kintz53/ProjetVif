@@ -7,6 +7,7 @@
     <list default="true" id="a60dfc3b-0b78-4353-a258-d0216a8b6b54" name="Changes" comment="re">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/serveur.py" beforeDir="false" afterPath="$PROJECT_DIR$/serveur.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +35,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python tests.Doctests in __init__.executor": "Debug",
     "Python.client.executor": "Run",
     "Python.serveur.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
