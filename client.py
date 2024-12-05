@@ -60,7 +60,6 @@ if __name__ == "__main__":
     else:
         print(connect["message"], "\nPosition :", connect["position"])
 
-    # Boucle principale
     while connect["status"] not in ['Win', 'Lose']:
         connect = deplacement(pseudo, type_de_joueur, connect)
         if "error" in connect:
