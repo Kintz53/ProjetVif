@@ -1,36 +1,38 @@
-import socket
+import http.client
+import json
 
-HOST = 'localhost'
-PORT = 50007
+HOST = "localhost"
+PORT = 9999
 
-def get_position(s):
-    s.sendall(b"GET_POSITION")
-    data = s.recv(1024)
-    return data.decode()
 
-def set_position(s, new_position):
-    command = f"SET_POSITION {new_position}"
-    s.sendall(command.encode())
-    data = s.recv(1024)
-    return data.decode()
-
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+def send_player_data(file_path):
     try:
-        s.connect((HOST, PORT))
-        print("Connecté au serveur.")
+        # Charger le fichier JSON
+        with open(file_path, "r") as file:
+            player_data = json.load(file)
 
-        current_position = get_position(s)
-        print("Position actuelle :", current_position)
-        new_position = '''json{
-                "pseudo":"player",
-                "role":"vif"
-                "deplacement"=
-        }
-        '''
-        response = set_position(s, new_position)
-        print("Réponse après mise à jour :", response)
+        # Préparer la connexion et envoyer les données
+        conn = http.client.HTTPConnection(HOST, PORT)
+        headers = {"Content-Type": "application/json"}
+        body = json.dumps(player_data)
+        conn.request("POST", "/player_data", body=body, headers=headers)
 
-        updated_position = get_position(s)
-        print("Nouvelle position :", updated_position)
+        # Recevoir la réponse
+        response = conn.getresponse()
+        if response.status == 200:
+            data = response.read().decode()
+            return json.loads(data)  # On suppose une réponse JSON
+        else:
+            return f"Erreur : {response.status} {response.reason}"
     except Exception as e:
-        print("Erreur :", e)
+        return f"Erreur lors de l'envoi des données : {e}"
+    finally:
+        conn.close()
+
+
+# Programme principal
+if __name__ == "__main__":
+    file_path = "player.json"  # Chemin vers le fichier JSON du joueur
+    print("Envoi des données du joueur...")
+    response = send_player_data(file_path)
+    print("Réponse du serveur :", response)
