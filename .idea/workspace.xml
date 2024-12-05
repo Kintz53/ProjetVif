@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a60dfc3b-0b78-4353-a258-d0216a8b6b54" name="Changes" comment="re">
-      <change afterPath="$PROJECT_DIR$/player.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serveur.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
     </list>
