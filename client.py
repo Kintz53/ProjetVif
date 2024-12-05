@@ -1,7 +1,7 @@
 import http.client
 import json
-
-HOST = "localhost"
+import time
+HOST = "172.25.1.8"
 PORT = 9999
 
 def connexion(pseudo, type_de_joueur):
@@ -54,7 +54,12 @@ if __name__ == "__main__":
     pseudo = input("Entrez votre pseudo : ")
     type_de_joueur = input('Type de joueur ("Loup", "Vif") : ')
 
+
+
+
+
     connect = connexion(pseudo, type_de_joueur)
+    print(connect)
     if "error" in connect:
         print(connect["error"])
     else:
@@ -71,6 +76,7 @@ if __name__ == "__main__":
         continuer=ValidationTour(pseudo,type_de_joueur)
         while(continuer['status']!='Action'):
             continuer = ValidationTour(pseudo, type_de_joueur)
+            time.sleep(10)
 
 
 
